@@ -1,0 +1,11 @@
+id,ime,prezime,zemlja,visina,datum_rodjenja,glavna_strana,partner,ranking,broj_odigranih_matcheva,postotak_pobjeda
+1,Arthur,Coello,Španjolska,190,2002-03-08,desno,Agustin Tapia,15965,136,89.00
+2,Agustin,Tapia,Argentina,179,1999-07-24,lijevo,Arthur Coello,15395,119,90.80
+3,Alejandro,Galan,Španjolska,186,1999-05-15,lijevo,Federico Chingotto,12982,133,85.70
+4,Federico,Chingotto,Argentina,170,1997-04-13,desno,Alejandro Galan,12982,125,80.00
+5,Juan,Lebron,Španjolska,184,1995-01-31,desno,Martin Di Nenno,8037,119,79.80
+6,Martin,Di Nenno,Argentina,175,1997-03-18,desno,Juan Lebron,7968,118,77.10
+7,Franco,Stupaczuk,Argentina,180,1996-03-25,lijevo,Miguel Yanguas,7294,115,76.50
+8,Miguel,Yanguas,Španjolska,189,2002-03-18,desno,Franco Stupaczuk,4980,87,67.80
+9,Jorge,Nieto,Španjolska,175,1998-12-18,lijevo,Jon Sanz,3839,85,67.10
+10,Jon,Sanz,Španjolska,175,2000-09-25,desno,Jorge Nieto,3733,85,67.10
