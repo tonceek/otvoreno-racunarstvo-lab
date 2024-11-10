@@ -1,0 +1,83 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://example.com/igraci_padela.json",
+    "title": "Igrači padela",
+    "description": "Lista profesionalnih padel igrača",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "title": "Igrač padela",
+        "description": "Objekt koji sadrži sve podatke o igraču padela.",
+        "required": ["id",
+            "ime",
+            "prezime",
+            "zemlja",
+            "visina",
+            "datum_rodjenja",
+            "glavna_strana",
+            "partner_id",
+            "ranking",
+            "broj_odigranih_matcheva",
+            "postotak_pobjeda",
+            "partner"],
+        "properties": {
+            "id": {
+                "type": "integer",
+                "title": "ID",
+                "description": "ID igrača."
+            },
+            "ime": {
+                "type": "string",
+                "title": "Ime",
+                "description": "Ime igrača."
+            },
+            "prezime": {
+                "type": "string",
+                "title": "Prezime",
+                "description": "Prezime igrača."
+            },
+            "zemlja": {
+                "type": "string",
+                "title": "Zemlja",
+                "description": "Zemlja igrača."
+            },
+            "visina": {
+                "type": "integer",
+                "title": "Visina",
+                "description": "Visina igrača."
+            },
+            "datum_rodjenja": {
+                "type": "string",
+                "format" : "date",
+                "title": "Datum rođenja",
+                "description": "Datum rođenja igrača."
+            },
+            "glavna_strana": {
+                "type": "string",
+                "title": "Glavna strana",
+                "description": "Glavna strana na kojoj igrač igra."
+            },
+            "partner": {
+                "type": "object",
+                "title": "Partner",
+                "description": "Igrač s kojim igra u paru."
+            },
+            "ranking": {
+                "type": "integer",
+                "title": "Ranking",
+                "description": "Broj bodova po FIP ljestvici igrača."
+            },
+            "broj_odigranih_matcheva": {
+                "type": "integer",
+                "title": "Broj odigranih matcheva",
+                "description": "Broj odigranih matcheva igrača."
+            },
+            "postotak_pobjeda": {
+                "type": "number",
+                "title": "Postotak pobjeda",
+                "description": "Postotak pobjeda igrača."
+            }
+        }
+
+    }
+}
