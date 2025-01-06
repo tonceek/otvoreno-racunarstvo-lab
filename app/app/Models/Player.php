@@ -23,7 +23,7 @@ class Player extends Model
         'zemlja',
         'visina',
         'datum_rodjenja',
-        'glavna strana',
+        'glavna_strana',
         'partner_id',
         'ranking',
         'broj_odigranih_meceva',

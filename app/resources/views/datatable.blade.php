@@ -46,7 +46,7 @@
                             </form>
 
                             <!-- Players Table -->
-                            <table class="table table-striped table-bordered align-middle" id="players-table">
+                            <table class="table w-full table-striped table-bordered align-middle" id="players-table">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
@@ -54,12 +54,12 @@
                                     <th>Prezime</th>
                                     <th>Zemlja</th>
                                     <th>Visina</th>
-                                    <th>Datum Rođenja</th>
-                                    <th>Main Side</th>
+                                    <th>Datum rođenja</th>
+                                    <th>Glavna strana</th>
                                     <th>Partner</th>
                                     <th>Ranking</th>
-                                    <th>Broj Odigranih Matcheva</th>
-                                    <th>Postotak Pobjeda</th>
+                                    <th>Broj odigranih matcheva</th>
+                                    <th>Postotak pobjeda</th>
                                 </tr>
                                 </thead>
                                 <tbody id="players-body">
@@ -97,7 +97,7 @@
                         <td>${player.zemlja}</td>
                         <td>${player.visina}</td>
                         <td>${player.datum_rodjenja}</td>
-                        <td>${player.main_side}</td>
+                        <td>${player.glavna_strana}</td>
                         <td>${player.partner ? player.partner.ime + ' ' + player.partner.prezime : ''}</td>
                         <td>${player.ranking}</td>
                         <td>${player.broj_odigranih_matcheva}</td>

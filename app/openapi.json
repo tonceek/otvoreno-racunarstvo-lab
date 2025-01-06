@@ -1,0 +1,380 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Igrači Padela API",
+        "description": "API za upravljanje podacima o profesionalnim padel igračima.",
+        "version": "1.0.0",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "paths": {
+        "/igraci": {
+            "get": {
+                "summary": "Dohvati sve igrače",
+                "description": "Vraća listu svih igrača padela.",
+                "responses": {
+                    "200": {
+                        "description": "Lista igrača",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Igrac"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Dodaj novog igrača",
+                "description": "Kreira novog igrača padela.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Igrac"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Igrač kreiran",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Igrac"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validacija nije uspela",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": { "type": "string" },
+                                        "message": { "type": "string" },
+                                        "errors": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "array",
+                                                "items": { "type": "string" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/igraci/{id}": {
+            "get": {
+                "summary": "Dohvati igrača",
+                "description": "Dohvaća podatke o određenom igraču prema ID-u.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID igrača",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Podaci o igraču",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Igrac"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Igrač ne postoji",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": { "type": "string" },
+                                        "message": { "type": "string" },
+                                        "data": { "type": "null" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Ažuriraj igrača",
+                "description": "Ažurira podatke o određenom igraču.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID igrača",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Igrac"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Igrač ažuriran",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Igrac"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Igrač ne postoji",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": { "type": "string" },
+                                        "message": { "type": "string" },
+                                        "data": { "type": "null" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validacija nije uspela",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": { "type": "string" },
+                                        "message": { "type": "string" },
+                                        "errors": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "array",
+                                                "items": { "type": "string" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Obriši igrača",
+                "description": "Briše određenog igrača prema ID-u.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID igrača",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Igrač obrisan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": { "type": "string" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Igrač ne postoji",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": { "type": "string" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/igraci/zemlja/{zemlja}": {
+            "get": {
+                "summary": "Dohvati igrače iz zemlje",
+                "description": "Dohvaća sve igrače iz zadane zemlje.",
+                "parameters": [
+                    {
+                        "name": "zemlja",
+                        "in": "path",
+                        "required": true,
+                        "description": "Naziv zemlje",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista igrača iz zemlje",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Igrac"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Nema igrača iz zadane zemlje",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": { "type": "string" },
+                                        "message": { "type": "string" },
+                                        "data": { "type": "null" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/igraci/glavna-strana/{strana}": {
+            "get": {
+                "summary": "Dohvati igrače s glavnom stranom",
+                "description": "Dohvaća sve igrače koji igraju na zadanoj glavnoj strani.",
+                "parameters": [
+                    {
+                        "name": "strana",
+                        "in": "path",
+                        "required": true,
+                        "description": "Glavna strana (lijevo ili desno)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista igrača s glavnom stranom",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Igrac"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Nema igrača s tom stranom",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": { "type": "string" },
+                                        "message": { "type": "string" },
+                                        "data": { "type": "null" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Igrac": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "ime": {
+                        "type": "string"
+                    },
+                    "prezime": {
+                        "type": "string"
+                    },
+                    "zemlja": {
+                        "type": "string"
+                    },
+                    "visina": {
+                        "type": "integer"
+                    },
+                    "datum_rodjenja": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "glavna_strana": {
+                        "type": "string"
+                    },
+                    "partner_id": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "ranking": {
+                        "type": "integer"
+                    },
+                    "broj_odigranih_matcheva": {
+                        "type": "integer"
+                    },
+                    "postotak_pobjeda": {
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    }
+}
