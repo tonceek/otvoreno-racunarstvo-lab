@@ -17,7 +17,7 @@ class IgracController extends Controller
         return response()->json([
                                     'status' => 'success',
                                     'message' => 'Igrači uspješno pronađeni.',
-                                    'data' => $igraci
+                                    'data' => $igraci->map->jsonLd()
                                 ], 200);
     }
 
@@ -61,7 +61,7 @@ class IgracController extends Controller
         return response()->json([
                                     'status' => 'success',
                                     'message' => 'Igrač uspješno kreiran.',
-                                    'data' => $igrac
+                                    'data' => $igrac->jsonLd()
                                 ], 201);
     }
 
@@ -83,7 +83,7 @@ class IgracController extends Controller
         return response()->json([
                                     'status' => 'success',
                                     'message' => 'Igrač postoji.',
-                                    'data' => $igrac
+                                    'data' => $igrac->jsonLd()
                                 ], 200);
     }
 
@@ -135,7 +135,7 @@ class IgracController extends Controller
         return response()->json([
                                     'status' => 'success',
                                     'message' => 'Igrač uspješno ažuriran.',
-                                    'data' => $igrac
+                                    'data' => $igrac->jsonLd()
                                 ], 200);
 
 
@@ -180,7 +180,7 @@ class IgracController extends Controller
         return response()->json([
                                     'status' => 'success',
                                     'message' => 'Partner uspješno dohvaćen.',
-                                    'data' => $igrac->partner
+                                    'data' => $igrac->partner->jsonLd()
                                 ], 200);
     }
 
@@ -199,7 +199,7 @@ class IgracController extends Controller
         return response()->json([
                                     'status' => 'success',
                                     'message' => 'Igrači uspješno dohvaćeni.',
-                                    'data' => $igraci
+                                    'data' => $igraci->map->jsonLd()
                                 ], 200);
     }
 
@@ -218,7 +218,7 @@ class IgracController extends Controller
         return response()->json([
                                     'status' => 'success',
                                     'message' => 'Lista igrača s glavnom stranom.',
-                                    'data' => $igraci
+                                    'data' => $igraci->map->jsonLd()
                                 ], 200);
     }
 }

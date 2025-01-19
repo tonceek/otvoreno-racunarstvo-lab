@@ -29,6 +29,18 @@
                         <h1>Igrači padela</h1>
 
                     </header>
+                    <ul>
+
+                        @if(auth()->check())
+                            <li><a href="{{route('profile')}}">Korisnički Profil</a></li>
+                            <li><a href="/refresh-data">Osvježi preslike</a></li>
+                            <li><a href="/logout">Odjava</a></li>
+                        @endif
+                            @if(!auth()->check())
+                                <li><a href="/login">Prijava</a></li>
+                            @endif
+
+                    </ul>
 
                     <main class="mt-6">
                         <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">

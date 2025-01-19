@@ -53,4 +53,28 @@ class Player extends Model
     {
         return $this->belongsTo(Player::class, 'partner_id');
     }
+
+    public function jsonLd()
+    {
+        return [
+            "@context" => "https://schema.org/",
+            "@type" => "Person",
+            "name" => "{$this->ime} {$this->prezime}",
+            "nationality" => $this->zemlja,
+            "height" => [
+                "@type" => "QuantitativeValue",
+                "unitCode" => "cm",
+                "value" => $this->visina
+            ],
+            "birthDate" => $this->datum_rodjenja,
+            "knowsAbout" => $this->glavna_strana,
+            "rankingPosition" => $this->ranking,
+            "matchesPlayed" => $this->broj_odigranih_matcheva,
+            "winPercentage" => $this->postotak_pobjeda,
+            "partner" => $this->partner ? [
+                "@type" => "Person",
+                "name" => "{$this->partner->ime} {$this->partner->prezime}"
+            ] : null
+        ];
+    }
 }
